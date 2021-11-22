@@ -29,10 +29,11 @@ namespace studentmanager
                         "~/Content/themes/base/jquery.ui.core.css"));
 
             bundles.Add(new StyleBundle("~/Assets/css").Include(
-                                        "~/Assets/css/style.css",
                                         "~/Assets/css/stylemin.css",
                                         "~/Assets/css/404.css"));
             bundles.Add(new ScriptBundle("~/Assets/js").Include(
+                                    "~/Assets/plugins/chart.min.js",
+                                    "~/Assets/plugins/feather.min.js",
                                     "~/Assets/js/script.js"
                                     ));
         }
