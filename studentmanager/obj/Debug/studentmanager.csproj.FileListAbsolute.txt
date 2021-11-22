@@ -60,3 +60,4 @@ C:\ICT\c#\studentmanager\studentmanager\bin\fr\Microsoft.Web.WebPages.OAuth.reso
 C:\ICT\c#\studentmanager\studentmanager\bin\fr\WebMatrix.WebData.resources.dll
 C:\ICT\c#\studentmanager\studentmanager\obj\Debug\studentmanager.dll
 C:\ICT\c#\studentmanager\studentmanager\obj\Debug\studentmanager.pdb
+C:\ICT\c#\studentmanager\studentmanager\obj\Debug\studentmanager.csprojResolveAssemblyReference.cache

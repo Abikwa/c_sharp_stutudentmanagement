@@ -164,6 +164,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ResponsibleController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -317,8 +318,8 @@
     <Content Include="Assets\img\svg\radio.svg" />
     <Content Include="Assets\img\svg\thumbnail.svg" />
     <Content Include="Assets\js\script.js" />
-    <Content Include="Assets\plugins\chartmin.js" />
-    <Content Include="Assets\plugins\feathermin.js" />
+    <Content Include="Assets\plugins\chart.min.js" />
+    <Content Include="Assets\plugins\feather.min.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -458,6 +459,7 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Partials\_Sidebar.cshtml" />
     <Content Include="Views\Partials\_script.cshtml" />
+    <Content Include="Views\Responsible\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
