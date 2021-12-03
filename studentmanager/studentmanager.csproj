@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -170,6 +172,30 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\lesson.cs">
+      <DependentUpon>StudentmanageModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\responsible.cs">
+      <DependentUpon>StudentmanageModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\student.cs">
+      <DependentUpon>StudentmanageModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentmanageModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentmanageModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentmanageModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentmanageModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentmanageModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentmanageModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -399,6 +425,23 @@
     <Content Include="Assets\img\categories\03.webp" />
     <Content Include="Assets\img\categories\04.webp" />
     <Content Include="Assets\plugins\feather.min.js.map" />
+    <EntityDeploy Include="Models\StudentmanageModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StudentmanageModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\StudentmanageModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StudentmanageModel.edmx</DependentUpon>
+      <LastGenOutput>StudentmanageModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\StudentmanageModel.edmx.diagram">
+      <DependentUpon>StudentmanageModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\StudentmanageModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StudentmanageModel.edmx</DependentUpon>
+      <LastGenOutput>StudentmanageModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -466,6 +509,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
