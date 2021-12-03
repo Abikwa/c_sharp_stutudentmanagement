@@ -1,0 +1,41 @@
+﻿@{
+ViewBag.Title = "Index";
+Layout = "~/Views/Layout/_Default.cshtml";
+}
+
+<h2 class="main-title">Responsibles</h2>
+
+    <div class="row">
+            <div class="col-md-3">
+            <div class="card mb-4 shadow">
+                <div class="card-body">
+                <div class="categories-table-img">
+                    
+                    <img src="/Assets/img/categories/01.jpg" alt="category">
+                     
+                </div>
+                <span class="font-weight-bolder h5"> Malo maclou  </span>
+                <div class="text-end">
+                    <p> Gikung   </p>
+                    <p class="small">  61415263 </p>
+                    <span class="p-relative">
+                    <button class="dropdown-btn transparent-btn" type="button" title="More info">
+                        <div class="sr-only">More info</div>
+                        <i data-feather="more-horizontal" aria-hidden="true"></i>
+                    </button>
+                    <ul class="users-item-dropdown dropdown">
+                        <li><a href="/responsibles/{{ responsible.pk}}" class="btn btn-primary btn-sm w-100 text-white">detail</a></li>
+                        <li>
+                        <form action="/responsibles/{{ responsible.pk }}/delete/" method="POST">
+                            <button type="submit" class="w-100 btn btn-sm btn-danger"><i class="fas fa-trash"></i> delete</button>
+                        </form>
+                        </li>
+                    </ul>
+                    </span>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+    </div>
