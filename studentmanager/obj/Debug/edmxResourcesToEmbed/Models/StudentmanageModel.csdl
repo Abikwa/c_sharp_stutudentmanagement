@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="studentmanager_csharpModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="studentmanager_csharpEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="lessons" EntityType="studentmanager_csharpModel.lesson" />
+    <EntitySet Name="responsibles" EntityType="studentmanager_csharpModel.responsible" />
+    <EntitySet Name="students" EntityType="studentmanager_csharpModel.student" />
+    <AssociationSet Name="FK__lessons__Respons__1273C1CD" Association="studentmanager_csharpModel.FK__lessons__Respons__1273C1CD">
+      <End Role="responsibles" EntitySet="responsibles" />
+      <End Role="lessons" EntitySet="lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students__Lesson__15502E78" Association="studentmanager_csharpModel.FK__students__Lesson__15502E78">
+      <End Role="lessons" EntitySet="lessons" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="lesson">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ResponsibleId" Type="Int32" Nullable="false" />
+    <Property Name="NameLesson" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="HourLesson" Type="Int32" Nullable="false" />
+    <Property Name="DatestartLesson" Type="DateTime" Precision="3" />
+    <Property Name="DateendLesson" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="responsible" Relationship="studentmanager_csharpModel.FK__lessons__Respons__1273C1CD" FromRole="lessons" ToRole="responsibles" />
+    <NavigationProperty Name="students" Relationship="studentmanager_csharpModel.FK__students__Lesson__15502E78" FromRole="lessons" ToRole="students" />
+  </EntityType>
+  <EntityType Name="responsible">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="NameResponsible" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="AdressResponsible" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="EmailResponsible" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="TelephoneResponsible" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="lessons" Relationship="studentmanager_csharpModel.FK__lessons__Respons__1273C1CD" FromRole="responsibles" ToRole="lessons" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="LessonId" Type="Int32" Nullable="false" />
+    <Property Name="MatriculStudent" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="NameStudent" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="AdressStudent" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="EmailStudent" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="TelephoneStudent" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="AgeStudent" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="lesson" Relationship="studentmanager_csharpModel.FK__students__Lesson__15502E78" FromRole="students" ToRole="lessons" />
+  </EntityType>
+  <Association Name="FK__lessons__Respons__1273C1CD">
+    <End Role="responsibles" Type="studentmanager_csharpModel.responsible" Multiplicity="1" />
+    <End Role="lessons" Type="studentmanager_csharpModel.lesson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="responsibles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="lessons">
+        <PropertyRef Name="ResponsibleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students__Lesson__15502E78">
+    <End Role="lessons" Type="studentmanager_csharpModel.lesson" Multiplicity="1" />
+    <End Role="students" Type="studentmanager_csharpModel.student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lessons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="students">
+        <PropertyRef Name="LessonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

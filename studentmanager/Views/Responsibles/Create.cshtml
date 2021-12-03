@@ -1,0 +1,62 @@
+﻿@model studentmanager.Models.responsible
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Layout/_Default.cshtml";
+}
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset class="row">
+        <legend>responsible</legend>
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.NameResponsible)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.NameResponsible, new { @class = "form-control form-control-sm" })
+                @Html.ValidationMessageFor(model => model.NameResponsible)
+            </div>
+        </div>
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AdressResponsible)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.AdressResponsible, new { @class = "form-control form-control-sm" })
+                @Html.ValidationMessageFor(model => model.AdressResponsible)
+            </div>
+        </div>
+        <div class="col-md-12"></div>
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.EmailResponsible)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.EmailResponsible, new { @class = "form-control form-control-sm" })
+                @Html.ValidationMessageFor(model => model.EmailResponsible)
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.TelephoneResponsible)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.TelephoneResponsible, new { @class = "form-control form-control-sm" })
+                @Html.ValidationMessageFor(model => model.TelephoneResponsible)
+            </div>
+        </div>
+
+        <div class="col-md-8 text-right mt-2 ">
+            <button type="submit" class="btn btn-primary">Create responsible</button>
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+ 

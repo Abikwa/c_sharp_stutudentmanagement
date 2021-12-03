@@ -1,0 +1,47 @@
+﻿@model studentmanager.Models.responsible
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Layout/_Default.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>responsible</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NameResponsible)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NameResponsible)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AdressResponsible)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AdressResponsible)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EmailResponsible)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmailResponsible)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TelephoneResponsible)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TelephoneResponsible)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

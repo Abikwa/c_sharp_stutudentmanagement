@@ -166,7 +166,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ResponsibleController.cs" />
+    <Compile Include="Controllers\ResponsiblesController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -343,6 +343,7 @@
     <Content Include="Assets\img\svg\move.svg" />
     <Content Include="Assets\img\svg\radio.svg" />
     <Content Include="Assets\img\svg\thumbnail.svg" />
+    <Content Include="Assets\js\main.js" />
     <Content Include="Assets\js\script.js" />
     <Content Include="Assets\plugins\chart.min.js" />
     <Content Include="Assets\plugins\feather.min.js" />
@@ -502,7 +503,11 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Partials\_Sidebar.cshtml" />
     <Content Include="Views\Partials\_script.cshtml" />
-    <Content Include="Views\Responsible\Index.cshtml" />
+    <Content Include="Views\Responsibles\Index.cshtml" />
+    <Content Include="Views\Responsibles\Details.cshtml" />
+    <Content Include="Views\Responsibles\Create.cshtml" />
+    <Content Include="Views\Responsibles\Edit.cshtml" />
+    <Content Include="Views\Responsibles\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

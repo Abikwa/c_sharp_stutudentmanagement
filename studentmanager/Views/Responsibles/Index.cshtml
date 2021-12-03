@@ -1,0 +1,43 @@
+﻿@model IEnumerable<studentmanager.Models.responsible>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/_Default.cshtml";
+}
+
+<h2 class="main-title">Responsibles</h2>
+
+    <div class="row">
+
+        @foreach (var item in Model) {
+    
+            <div class="col-md-3">
+                <div class="card mb-4 shadow">
+                    <div class="card-body">
+                        <div class="categories-table-img">
+                            <img src="/Assets/img/categories/01.jpg" alt="category">
+                        </div>
+
+                        <span class="font-weight-bolder h5"> @item.NameResponsible  </span>
+                        <div class="text-end">
+                            <p> @item.AdressResponsible   </p>
+                            <p class="small">  @item.TelephoneResponsible @item.EmailResponsible </p>
+                            <span class="p-relative">
+                            <button class="dropdown-btn transparent-btn" type="button" title="More info">
+                                <div class="sr-only">More info</div>
+                                <i data-feather="more-horizontal" aria-hidden="true"></i>
+                            </button>
+                            <div class="">
+                                <span><a href="/Responsibles/Details/@item.Id" class="btn btn-link btn-sm">detail</a></span>
+                                <span><a href="/responsibles/edit/@item.Id" class="btn btn-primary btn-sm text-white">edit</a></span>
+                                <span><a href="/responsibles/delete/@item.Id" class="btn btn-danger btn-sm text-white">delete</a></span>
+                            </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+      
+        } 
+    </div>
