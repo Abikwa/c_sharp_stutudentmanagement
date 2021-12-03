@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="studentmanager_csharpModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="studentmanager_csharpModelStoreContainer">
+    <EntitySet Name="lessons" EntityType="studentmanager_csharpModel.Store.lessons" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="responsibles" EntityType="studentmanager_csharpModel.Store.responsibles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="students" EntityType="studentmanager_csharpModel.Store.students" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__lessons__Respons__1273C1CD" Association="studentmanager_csharpModel.Store.FK__lessons__Respons__1273C1CD">
+      <End Role="responsibles" EntitySet="responsibles" />
+      <End Role="lessons" EntitySet="lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students__Lesson__15502E78" Association="studentmanager_csharpModel.Store.FK__students__Lesson__15502E78">
+      <End Role="lessons" EntitySet="lessons" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="lessons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ResponsibleId" Type="int" Nullable="false" />
+    <Property Name="NameLesson" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="HourLesson" Type="int" Nullable="false" />
+    <Property Name="DatestartLesson" Type="datetime" />
+    <Property Name="DateendLesson" Type="datetime" />
+  </EntityType>
+  <EntityType Name="responsibles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NameResponsible" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="AdressResponsible" Type="varchar" MaxLength="150" />
+    <Property Name="EmailResponsible" Type="varchar" MaxLength="150" />
+    <Property Name="TelephoneResponsible" Type="varchar" Nullable="false" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LessonId" Type="int" Nullable="false" />
+    <Property Name="MatriculStudent" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="NameStudent" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="AdressStudent" Type="varchar" MaxLength="150" />
+    <Property Name="EmailStudent" Type="varchar" MaxLength="150" />
+    <Property Name="TelephoneStudent" Type="varchar" MaxLength="150" />
+    <Property Name="AgeStudent" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__lessons__Respons__1273C1CD">
+    <End Role="responsibles" Type="studentmanager_csharpModel.Store.responsibles" Multiplicity="1" />
+    <End Role="lessons" Type="studentmanager_csharpModel.Store.lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="responsibles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="lessons">
+        <PropertyRef Name="ResponsibleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students__Lesson__15502E78">
+    <End Role="lessons" Type="studentmanager_csharpModel.Store.lessons" Multiplicity="1" />
+    <End Role="students" Type="studentmanager_csharpModel.Store.students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lessons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="students">
+        <PropertyRef Name="LessonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

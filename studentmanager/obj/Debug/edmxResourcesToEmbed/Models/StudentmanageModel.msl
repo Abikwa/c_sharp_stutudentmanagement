@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="studentmanager_csharpModelStoreContainer" CdmEntityContainer="studentmanager_csharpEntities">
+    <EntitySetMapping Name="lessons">
+      <EntityTypeMapping TypeName="studentmanager_csharpModel.lesson">
+        <MappingFragment StoreEntitySet="lessons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ResponsibleId" ColumnName="ResponsibleId" />
+          <ScalarProperty Name="NameLesson" ColumnName="NameLesson" />
+          <ScalarProperty Name="HourLesson" ColumnName="HourLesson" />
+          <ScalarProperty Name="DatestartLesson" ColumnName="DatestartLesson" />
+          <ScalarProperty Name="DateendLesson" ColumnName="DateendLesson" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="responsibles">
+      <EntityTypeMapping TypeName="studentmanager_csharpModel.responsible">
+        <MappingFragment StoreEntitySet="responsibles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NameResponsible" ColumnName="NameResponsible" />
+          <ScalarProperty Name="AdressResponsible" ColumnName="AdressResponsible" />
+          <ScalarProperty Name="EmailResponsible" ColumnName="EmailResponsible" />
+          <ScalarProperty Name="TelephoneResponsible" ColumnName="TelephoneResponsible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="studentmanager_csharpModel.student">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+          <ScalarProperty Name="MatriculStudent" ColumnName="MatriculStudent" />
+          <ScalarProperty Name="NameStudent" ColumnName="NameStudent" />
+          <ScalarProperty Name="AdressStudent" ColumnName="AdressStudent" />
+          <ScalarProperty Name="EmailStudent" ColumnName="EmailStudent" />
+          <ScalarProperty Name="TelephoneStudent" ColumnName="TelephoneStudent" />
+          <ScalarProperty Name="AgeStudent" ColumnName="AgeStudent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

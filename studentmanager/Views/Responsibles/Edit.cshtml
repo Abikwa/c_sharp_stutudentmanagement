@@ -1,0 +1,60 @@
+﻿@model studentmanager.Models.responsible
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Layout/_Default.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>responsible</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NameResponsible)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NameResponsible)
+            @Html.ValidationMessageFor(model => model.NameResponsible)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AdressResponsible)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AdressResponsible)
+            @Html.ValidationMessageFor(model => model.AdressResponsible)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailResponsible)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailResponsible)
+            @Html.ValidationMessageFor(model => model.EmailResponsible)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TelephoneResponsible)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TelephoneResponsible)
+            @Html.ValidationMessageFor(model => model.TelephoneResponsible)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+ 

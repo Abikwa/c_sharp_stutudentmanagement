@@ -32,9 +32,11 @@ namespace studentmanager
                                         "~/Assets/css/stylemin.css",
                                         "~/Assets/css/404.css"));
             bundles.Add(new ScriptBundle("~/Assets/js").Include(
+                                    "~/Assets/js/jquery-3.6.0.js",
                                     "~/Assets/plugins/chart.min.js",
                                     "~/Assets/plugins/feather.min.js",
-                                    "~/Assets/js/script.js"
+                                    "~/Assets/js/script.js",
+                                    "~/Assets/js/main.js"
                                     ));
         }
     }
