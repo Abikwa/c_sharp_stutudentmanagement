@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="studentmanager_csharpModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="studentmanager_csharpModelStoreContainer">
+          <EntitySet Name="lessons" EntityType="studentmanager_csharpModel.Store.lessons" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="responsibles" EntityType="studentmanager_csharpModel.Store.responsibles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="students" EntityType="studentmanager_csharpModel.Store.students" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__lessons__Respons__1273C1CD" Association="studentmanager_csharpModel.Store.FK__lessons__Respons__1273C1CD">
+            <End Role="responsibles" EntitySet="responsibles" />
+            <End Role="lessons" EntitySet="lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__students__Lesson__15502E78" Association="studentmanager_csharpModel.Store.FK__students__Lesson__15502E78">
+            <End Role="lessons" EntitySet="lessons" />
+            <End Role="students" EntitySet="students" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="lessons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ResponsibleId" Type="int" Nullable="false" />
+          <Property Name="NameLesson" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="HourLesson" Type="int" Nullable="false" />
+          <Property Name="DatestartLesson" Type="datetime" />
+          <Property Name="DateendLesson" Type="datetime" />
+        </EntityType>
+        <EntityType Name="responsibles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameResponsible" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="AdressResponsible" Type="varchar" MaxLength="150" />
+          <Property Name="EmailResponsible" Type="varchar" MaxLength="150" />
+          <Property Name="TelephoneResponsible" Type="varchar" Nullable="false" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LessonId" Type="int" Nullable="false" />
+          <Property Name="MatriculStudent" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="NameStudent" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="AdressStudent" Type="varchar" MaxLength="150" />
+          <Property Name="EmailStudent" Type="varchar" MaxLength="150" />
+          <Property Name="TelephoneStudent" Type="varchar" MaxLength="150" />
+          <Property Name="AgeStudent" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__lessons__Respons__1273C1CD">
+          <End Role="responsibles" Type="studentmanager_csharpModel.Store.responsibles" Multiplicity="1" />
+          <End Role="lessons" Type="studentmanager_csharpModel.Store.lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="responsibles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="lessons">
+              <PropertyRef Name="ResponsibleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__students__Lesson__15502E78">
+          <End Role="lessons" Type="studentmanager_csharpModel.Store.lessons" Multiplicity="1" />
+          <End Role="students" Type="studentmanager_csharpModel.Store.students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lessons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="students">
+              <PropertyRef Name="LessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="studentmanager_csharpModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="studentmanager_csharpEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="lessons" EntityType="studentmanager_csharpModel.lesson" />
+          <EntitySet Name="responsibles" EntityType="studentmanager_csharpModel.responsible" />
+          <EntitySet Name="students" EntityType="studentmanager_csharpModel.student" />
+          <AssociationSet Name="FK__lessons__Respons__1273C1CD" Association="studentmanager_csharpModel.FK__lessons__Respons__1273C1CD">
+            <End Role="responsibles" EntitySet="responsibles" />
+            <End Role="lessons" EntitySet="lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__students__Lesson__15502E78" Association="studentmanager_csharpModel.FK__students__Lesson__15502E78">
+            <End Role="lessons" EntitySet="lessons" />
+            <End Role="students" EntitySet="students" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="lesson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ResponsibleId" Type="Int32" Nullable="false" />
+          <Property Name="NameLesson" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="HourLesson" Type="Int32" Nullable="false" />
+          <Property Name="DatestartLesson" Type="DateTime" Precision="3" />
+          <Property Name="DateendLesson" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="responsible" Relationship="studentmanager_csharpModel.FK__lessons__Respons__1273C1CD" FromRole="lessons" ToRole="responsibles" />
+          <NavigationProperty Name="students" Relationship="studentmanager_csharpModel.FK__students__Lesson__15502E78" FromRole="lessons" ToRole="students" />
+        </EntityType>
+        <EntityType Name="responsible">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NameResponsible" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="AdressResponsible" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="EmailResponsible" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="TelephoneResponsible" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="lessons" Relationship="studentmanager_csharpModel.FK__lessons__Respons__1273C1CD" FromRole="responsibles" ToRole="lessons" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="LessonId" Type="Int32" Nullable="false" />
+          <Property Name="MatriculStudent" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="NameStudent" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="AdressStudent" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="EmailStudent" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="TelephoneStudent" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="AgeStudent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="lesson" Relationship="studentmanager_csharpModel.FK__students__Lesson__15502E78" FromRole="students" ToRole="lessons" />
+        </EntityType>
+        <Association Name="FK__lessons__Respons__1273C1CD">
+          <End Role="responsibles" Type="studentmanager_csharpModel.responsible" Multiplicity="1" />
+          <End Role="lessons" Type="studentmanager_csharpModel.lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="responsibles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="lessons">
+              <PropertyRef Name="ResponsibleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__students__Lesson__15502E78">
+          <End Role="lessons" Type="studentmanager_csharpModel.lesson" Multiplicity="1" />
+          <End Role="students" Type="studentmanager_csharpModel.student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lessons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="students">
+              <PropertyRef Name="LessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="studentmanager_csharpModelStoreContainer" CdmEntityContainer="studentmanager_csharpEntities">
+          <EntitySetMapping Name="lessons">
+            <EntityTypeMapping TypeName="studentmanager_csharpModel.lesson">
+              <MappingFragment StoreEntitySet="lessons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ResponsibleId" ColumnName="ResponsibleId" />
+                <ScalarProperty Name="NameLesson" ColumnName="NameLesson" />
+                <ScalarProperty Name="HourLesson" ColumnName="HourLesson" />
+                <ScalarProperty Name="DatestartLesson" ColumnName="DatestartLesson" />
+                <ScalarProperty Name="DateendLesson" ColumnName="DateendLesson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="responsibles">
+            <EntityTypeMapping TypeName="studentmanager_csharpModel.responsible">
+              <MappingFragment StoreEntitySet="responsibles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameResponsible" ColumnName="NameResponsible" />
+                <ScalarProperty Name="AdressResponsible" ColumnName="AdressResponsible" />
+                <ScalarProperty Name="EmailResponsible" ColumnName="EmailResponsible" />
+                <ScalarProperty Name="TelephoneResponsible" ColumnName="TelephoneResponsible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="studentmanager_csharpModel.student">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+                <ScalarProperty Name="MatriculStudent" ColumnName="MatriculStudent" />
+                <ScalarProperty Name="NameStudent" ColumnName="NameStudent" />
+                <ScalarProperty Name="AdressStudent" ColumnName="AdressStudent" />
+                <ScalarProperty Name="EmailStudent" ColumnName="EmailStudent" />
+                <ScalarProperty Name="TelephoneStudent" ColumnName="TelephoneStudent" />
+                <ScalarProperty Name="AgeStudent" ColumnName="AgeStudent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
