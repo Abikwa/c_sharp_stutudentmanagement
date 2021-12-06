@@ -21,11 +21,6 @@ namespace studentmanager.Controllers
             return View(db.responsibles.ToList());
         }
 
-        public JsonResult getresponsibles(int idresponsible)
-        {
-            List<responsible> responsibles = db.responsibles.Where(item => item.Id == idresponsible).ToList();
-            return Json(responsibles, JsonRequestBehavior.AllowGet);
-        }
 
         //
         // GET: /Responsibles/Details/5
