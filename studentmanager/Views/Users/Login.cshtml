@@ -1,0 +1,48 @@
+﻿@model studentmanager.Models.user
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@RenderPage("~/Views/Partials/_Head.cshtml")
+<body>
+  <div class="layer"></div>
+<main class="page-center">
+  <article class="sign-up card ">
+      <div class="card-body">
+
+        <h1 class="sign-up__title">Welcome back!</h1>
+          @using (Html.BeginForm())
+          {
+              @Html.AntiForgeryToken()
+            <label class="form-label-wrapper">
+                <p class="form-label">User name</p>
+                @Html.TextBoxFor(Model => Model.UserName, new { @class="form-control", @placeholder="your  user name"})
+                @Html.ValidationMessageFor(Model => Model.UserName, "", new { @class="error-text text-danger"})
+             </label>
+          
+              <label class="form-label-wrapper">
+                <p class="form-label">Password</p>
+                @Html.TextBoxFor(Model => Model.pwd, new { @class="form-control", @type="password", @placeholder="your  password"})
+                  @Html.ValidationMessageFor(Model => Model.pwd, "", new { @class="error-text text-danger"})
+              </label>
+          
+              <a class="link-info forget-link" href="##">Forgot your password?</a>
+              <label class="form-checkbox-wrapper">
+                <input class="form-checkbox" type="checkbox">
+                <span class="form-checkbox-label">Remember me next time</span>
+              </label>
+          
+              <button class="form-btn primary-default-btn transparent-btn" type="submit">Sign in</button>
+        }
+          </div>
+  </article>
+</main>
+
+</body>
+
+</html>
