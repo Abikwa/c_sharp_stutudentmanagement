@@ -104,9 +104,12 @@ namespace studentmanager.Controllers
                           };
             var one = connect.FirstOrDefault(); //one result
 
-            if(one == null)
-                return View();
-            return RedirectToAction("Index", "Dashboard");
+            if (one != null)
+            {
+                Session["loggedUser"] = one.user_name.ToString();
+                return RedirectToAction("Index", "Dashboard");
+            }
+            return View();
         }
         //
         // GET: /Users/Delete/5

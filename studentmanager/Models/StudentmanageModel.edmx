@@ -7,8 +7,10 @@
     <Schema Namespace="studentmanager_csharpModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="studentmanager_csharpModelStoreContainer">
           <EntitySet Name="lessons" EntityType="studentmanager_csharpModel.Store.lessons" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="profiles" EntityType="studentmanager_csharpModel.Store.profiles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="responsibles" EntityType="studentmanager_csharpModel.Store.responsibles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="students" EntityType="studentmanager_csharpModel.Store.students" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users" EntityType="studentmanager_csharpModel.Store.users" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK__lessons__Respons__1273C1CD" Association="studentmanager_csharpModel.Store.FK__lessons__Respons__1273C1CD">
             <End Role="responsibles" EntitySet="responsibles" />
             <End Role="lessons" EntitySet="lessons" />
@@ -16,6 +18,10 @@
           <AssociationSet Name="FK__students__Lesson__15502E78" Association="studentmanager_csharpModel.Store.FK__students__Lesson__15502E78">
             <End Role="lessons" EntitySet="lessons" />
             <End Role="students" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__ProfileId__25869641" Association="studentmanager_csharpModel.Store.FK__users__ProfileId__25869641">
+            <End Role="profiles" EntitySet="profiles" />
+            <End Role="users" EntitySet="users" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="lessons">
@@ -28,6 +34,13 @@
           <Property Name="HourLesson" Type="int" Nullable="false" />
           <Property Name="DatestartLesson" Type="datetime" />
           <Property Name="DateendLesson" Type="datetime" />
+        </EntityType>
+        <EntityType Name="profiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameProfile" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="responsibles">
           <Key>
@@ -51,6 +64,17 @@
           <Property Name="EmailStudent" Type="varchar" MaxLength="150" />
           <Property Name="TelephoneStudent" Type="varchar" MaxLength="150" />
           <Property Name="AgeStudent" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="pwd" Type="varchar" Nullable="false" MaxLength="250" />
         </EntityType>
         <Association Name="FK__lessons__Respons__1273C1CD">
           <End Role="responsibles" Type="studentmanager_csharpModel.Store.responsibles" Multiplicity="1" />
@@ -76,6 +100,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__users__ProfileId__25869641">
+          <End Role="profiles" Type="studentmanager_csharpModel.Store.profiles" Multiplicity="1" />
+          <End Role="users" Type="studentmanager_csharpModel.Store.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -91,6 +127,12 @@
           <AssociationSet Name="FK__students__Lesson__15502E78" Association="studentmanager_csharpModel.FK__students__Lesson__15502E78">
             <End Role="lessons" EntitySet="lessons" />
             <End Role="students" EntitySet="students" />
+          </AssociationSet>
+          <EntitySet Name="profiles" EntityType="studentmanager_csharpModel.profile" />
+          <EntitySet Name="users" EntityType="studentmanager_csharpModel.user" />
+          <AssociationSet Name="FK__users__ProfileId__25869641" Association="studentmanager_csharpModel.FK__users__ProfileId__25869641">
+            <End Role="profile" EntitySet="profiles" />
+            <End Role="user" EntitySet="users" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="lesson">
@@ -155,6 +197,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NameProfile" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="users" Relationship="studentmanager_csharpModel.FK__users__ProfileId__25869641" FromRole="profile" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProfileId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="pwd" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="profile" Relationship="studentmanager_csharpModel.FK__users__ProfileId__25869641" FromRole="user" ToRole="profile" />
+        </EntityType>
+        <Association Name="FK__users__ProfileId__25869641">
+          <End Type="studentmanager_csharpModel.profile" Role="profile" Multiplicity="1" />
+          <End Type="studentmanager_csharpModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -195,6 +269,26 @@
                 <ScalarProperty Name="EmailStudent" ColumnName="EmailStudent" />
                 <ScalarProperty Name="TelephoneStudent" ColumnName="TelephoneStudent" />
                 <ScalarProperty Name="AgeStudent" ColumnName="AgeStudent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profiles">
+            <EntityTypeMapping TypeName="studentmanager_csharpModel.profile">
+              <MappingFragment StoreEntitySet="profiles">
+                <ScalarProperty Name="NameProfile" ColumnName="NameProfile" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="studentmanager_csharpModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

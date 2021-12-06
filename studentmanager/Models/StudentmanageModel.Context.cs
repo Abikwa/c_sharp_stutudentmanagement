@@ -28,5 +28,7 @@ namespace studentmanager.Models
         public DbSet<lesson> lessons { get; set; }
         public DbSet<responsible> responsibles { get; set; }
         public DbSet<student> students { get; set; }
+        public DbSet<profile> profiles { get; set; }
+        public DbSet<user> users { get; set; }
     }
 }

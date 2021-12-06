@@ -10,6 +10,9 @@
         <EntityTypeShape EntityType="studentmanager_csharpModel.student" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="studentmanager_csharpModel.FK__lessons__Respons__1273C1CD" ManuallyRouted="false" />
         <AssociationConnector Association="studentmanager_csharpModel.FK__students__Lesson__15502E78" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="studentmanager_csharpModel.profile" Width="1.5" PointX="6.3936483573138938" PointY="4.4485581090899924" />
+        <EntityTypeShape EntityType="studentmanager_csharpModel.user" Width="1.5" PointX="7.2119876347538021" PointY="6.1675354718079491" />
+        <AssociationConnector Association="studentmanager_csharpModel.FK__users__ProfileId__25869641" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

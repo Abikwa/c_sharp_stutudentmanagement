@@ -12,6 +12,12 @@
       <End Role="lessons" EntitySet="lessons" />
       <End Role="students" EntitySet="students" />
     </AssociationSet>
+    <EntitySet Name="profiles" EntityType="studentmanager_csharpModel.profile" />
+    <EntitySet Name="users" EntityType="studentmanager_csharpModel.user" />
+    <AssociationSet Name="FK__users__ProfileId__25869641" Association="studentmanager_csharpModel.FK__users__ProfileId__25869641">
+      <End Role="profile" EntitySet="profiles" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="lesson">
     <Key>
@@ -72,6 +78,38 @@
       </Principal>
       <Dependent Role="students">
         <PropertyRef Name="LessonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="profile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="NameProfile" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="users" Relationship="studentmanager_csharpModel.FK__users__ProfileId__25869641" FromRole="profile" ToRole="user" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ProfileId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="pwd" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="profile" Relationship="studentmanager_csharpModel.FK__users__ProfileId__25869641" FromRole="user" ToRole="profile" />
+  </EntityType>
+  <Association Name="FK__users__ProfileId__25869641">
+    <End Type="studentmanager_csharpModel.profile" Role="profile" Multiplicity="1" />
+    <End Type="studentmanager_csharpModel.user" Role="user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profile">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="ProfileId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
