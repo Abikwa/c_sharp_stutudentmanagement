@@ -1,0 +1,54 @@
+﻿@model studentmanager.Models.lesson
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Layout/_Default.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>lesson</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.responsible.NameResponsible)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.responsible.NameResponsible)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NameLesson)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NameLesson)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HourLesson)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HourLesson)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DatestartLesson)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DatestartLesson)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateendLesson)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateendLesson)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

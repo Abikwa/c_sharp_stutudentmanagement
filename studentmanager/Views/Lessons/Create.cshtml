@@ -1,0 +1,88 @@
+﻿@model studentmanager.Models.lesson
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Layout/_Default.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset class="row">
+        <legend>Lesson</legend>
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ResponsibleId, "responsible")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("ResponsibleId", null, "select responsible", new { @class="form-control" })
+                @Html.ValidationMessageFor(model => model.ResponsibleId)
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                Lessons responsible
+            </div>
+            <div class="editor-field">
+                @*@Html.DropDownList("Responsible", null, "lesson responsible", new { @class="form-control" })*@
+                <select id="responsible" class="form-control">
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.NameLesson)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.NameLesson, new { @class = "form-control form-control-sm" })
+                @Html.ValidationMessageFor(model => model.NameLesson)
+            </div>
+         </div>
+
+        <div class="col-md-12"></div>
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.HourLesson)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.HourLesson, new { @class = "form-control form-control-sm" })
+                @Html.ValidationMessageFor(model => model.HourLesson)
+            </div>
+        </div>
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DatestartLesson)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DatestartLesson, new { @class = "form-control form-control-sm" })
+                @Html.ValidationMessageFor(model => model.DatestartLesson)
+            </div>
+        </div>
+
+        <div class="col-md-12"></div>
+        <div class="col-md-3 mt-2 ml-5">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DateendLesson)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DateendLesson, new { @class = "form-control form-control-sm" })
+                @Html.ValidationMessageFor(model => model.DateendLesson)
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-2 ml-4">
+            <button type="submit" class="btn btn-primary btn-sm">Create</button>
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+ 
