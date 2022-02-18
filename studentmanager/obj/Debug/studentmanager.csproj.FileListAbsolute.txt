@@ -60,4 +60,7 @@ C:\ICT\c#\studentmanager\studentmanager\bin\fr\Microsoft.Web.WebPages.OAuth.reso
 C:\ICT\c#\studentmanager\studentmanager\bin\fr\WebMatrix.WebData.resources.dll
 C:\ICT\c#\studentmanager\studentmanager\obj\Debug\studentmanager.dll
 C:\ICT\c#\studentmanager\studentmanager\obj\Debug\studentmanager.pdb
-C:\ICT\c#\studentmanager\studentmanager\obj\Debug\studentmanager.csprojResolveAssemblyReference.cache
+C:\ICT\c#\studentmanager\studentmanager\bin\studentmanager.dll.config
+C:\ICT\c#\studentmanager\studentmanager\obj\Debug\studentmanager.csproj.AssemblyReference.cache
+C:\ICT\c#\studentmanager\studentmanager\obj\Debug\studentmanager.csproj.CoreCompileInputs.cache
+C:\ICT\c#\studentmanager\studentmanager\obj\Debug\studentmanager.csproj.CopyComplete
